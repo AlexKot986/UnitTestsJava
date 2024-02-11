@@ -67,9 +67,13 @@ public class UserRepositoryTest {
         userRepository.addUser(user1);
         userRepository.addUser(admin);
 
-        userRepository.usersUnLog();
+        userRepository.usersLogOut();
 
-        assertTrue((userRepository.data.size() == 1) && (userRepository.findByName(admin.name)));
+        assertTrue((userRepository.data.size() == 1) &&
+                (userRepository.findByName(admin.name)) &&
+                (!user.isAuthenticate) &&
+                (!user1.isAuthenticate) &&
+                (admin.isAuthenticate));
     }
 
 }

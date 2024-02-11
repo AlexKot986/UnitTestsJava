@@ -34,10 +34,11 @@ public class UserRepository {
      *  указывающим, обладает ли пользователь админскими правами. Протестируйте данную функцию
      */
 
-    public void usersUnLog() {
+    public void usersLogOut() {
         List<User> users = new ArrayList<>(data);
         users.forEach(user -> {
             if (!user.isAdmin) {
+                user.isAuthenticate = false;
                 data.remove(user);
             }
         });
